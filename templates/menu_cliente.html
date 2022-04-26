@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>Menu de cliente: </h1>
+        <!--<h2><a href="/agendar_cita">Agendar cita</a></h2>-->
+        <h2><a href="/agregar_mascota">Agregar mascota</a></h2>
+    </div>
+    <div>
+        <h1>
+            Mascotas en registro
+        </h1>
+        <table>
+            <tr>
+                <td>
+                    <label for="">Nombre mascota: </label>
+                </td> 
+                <td>
+                    <label for="">Raza de mascota: </label>
+                </td>
+                <td>
+                    <label for="">Accion</label>
+                </td>
+                <td>
+                    <label for="">Accion</label>
+                </td>
+            </tr>
+            {% for m in mascotas %}
+            <tr>
+                <td>
+                    <label for="">{{ m.1 }}</label>
+                </td>
+                <td>
+                    <label for="">{{ m.2 }}</label>
+                </td>
+                <td>
+                    <a href="/agendar_cita/{{ m.0 }}">Agendar</a>
+                </td>
+                <td>
+                    <a href="/eliminar_mascota/{{ m.0}}">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

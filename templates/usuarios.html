@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>Seleccione al usuario</h1>
+    </div>
+    <div>
+        <table>
+            <tr>
+                <td>
+                    <p>
+                        IDUSER
+                    </p>
+                </td>
+                <td>
+                    <p>
+                        User
+                    </p>
+                </td>
+                <td>
+                    <p>Acciones</p>
+                </td>
+            </tr>
+            {% for u in usr %}
+            <tr>
+                <td>
+                    {{ u.0 }}
+                </td>
+                <td>
+                    {{ u.1 }}
+                </td>
+                <td>
+                    <a href="/usuario/{{u.0}}">Mascotas</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

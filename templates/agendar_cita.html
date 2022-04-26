@@ -1,0 +1,47 @@
+{% for m in masc%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <div>
+            <h1>
+                Agendando cita para: {{m.2}}
+            </h1>
+            <h2>
+                Un hermos@ {{m.3}}
+            </h2>
+        </div>
+        <form action="/guardar_cita" method="post">
+            <table>
+                <tr>
+                    <td>
+                        <label for="">Fecha para cita</label>
+                    </td>
+                    <td>
+                        <input type="date" id="fecha" name="fecha" >
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" value="{{m.0}}" name="idmascota" hidden>
+                    </td>
+                    <td>
+                        <input type="submit" value="Agendar cita" name="submit">
+                    </td>
+                </tr>
+            </table>
+            
+        </form>
+    </div>
+</body>
+<footer>
+    <a href="/menu_cliente"><-- Volver atras</a>
+</footer>
+</html>
+{% endfor %}
