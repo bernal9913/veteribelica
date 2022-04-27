@@ -1,3 +1,8 @@
+# Veteribelica, proyecto final para Desarrollo de sistemas 4 22-1
+# Integrantes:
+# Amaro Ruiz Bryant Alejandro
+# Iduma Trujillo Elizabeth
+# Ramirez Bernal Jesus Carlos 
 
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from flask_mysqldb import MySQL
