@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ventas</title>
+</head>
+<body>
+    <div>
+        <h1>
+            Menu de ventas:
+        </h1>
+    </div>
+    <div>
+        <form action="/ventas" method="post">
+            <table>
+                <tr>
+                    <td>
+                        <label for="">Ingrese nombre del producto</label>
+                    </td>
+                    <td>
+                        <input type="text" name="insumo" id="insumo">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="">Precio: </label>
+                    </td>
+                    <td>
+                        <input type="text" name="precio" id="precio">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="">Cantidad:</label>
+                    </td>
+                    <td>
+                        <input type="text" name="cantidad" id="cantidad">
+                    </td>
+                </tr>
+            </table>
+            <input type="submit" value="Guardar venta">
+        </form>
+    </div>
+    <a href="/ventas_totales">Ver historial de ventas</a>
+    <a href="/logout">Cerrar sesion</a>
+</body>
+</html>

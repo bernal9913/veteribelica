@@ -54,3 +54,20 @@ class ModelUser():
                 return None
         except Exception as ex:
             raise Exception(ex)
+
+    @classmethod
+    def get_id_by_user(self, db, user):
+        try:
+            cursor = db.connection.cursor()
+            sql = 'SELECT idusuario FROM usuarios WHERE user = "' + user + '"'
+            cursor.execute(sql)
+            row = cursor.fetchone()
+            print("Model User get_id_by_user: ")
+            print(row)
+            if row != None:
+                idUser = row[0]
+                return idUser
+            else:
+                return None
+        except Exception as ex:
+            raise Exception(ex)

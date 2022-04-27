@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Menu de staff</title>
 </head>
 <body>
     <div>
         <h1>Menu para staff de la veteribelica</h1>
+        <h2>Bienvenido: {{ current_user.user }}</h2>
         <h2>
-            Primero busque por nombre de usuario
+            Cosas relacionadas a animales:
+            <br>Primero busque por nombre de usuario
         </h2>
     </div>
     <div>
@@ -33,6 +35,40 @@
                 </tr>
             </table>
         </form>
+        <div>
+            <h2>Agregar usuarios: </h2>
+            <form action="/agregar_usuarios" method="post">
+                <table>
+                    <tr>
+                        <td>
+                            <label for="">Ingrese nombre de usuario</label>
+                        </td>
+                        <td>
+                            <input type="text" name ="user", id ="user">
+                        </td>
+                    </tr>
+                    <tr>
+                        <tr>
+                            <td>
+                                <label for="">Ingrese la contraseña</label>
+                            </td>
+                            <td>
+                                <input type="text" name="pass" id="pass">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="">Ingrese el tipo de usuario, C = cliente, S = staff, V = ventas</label>
+                            </td>
+                            <td>
+                                <input type="text" name="tipo" id="tipo">
+                            </td>
+                        </tr>
+                    </tr>
+                </table>
+                <input type="submit" value="Registrar">
+            </form>
+        </div>
         <a href="/logout">Cerrar Sesion</a>
     </div>
 </body>

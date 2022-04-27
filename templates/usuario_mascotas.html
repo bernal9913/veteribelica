@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mascotas del cliente</title>
+</head>
+<body>
+    <h1>
+        Ingrese la opcion deseada
+    </h1>
+    <div>
+        <table>
+            <tr>
+                <td>
+                    <label for="">Nombre</label>
+                </td>
+                <td>
+                    <label for="">Raza</label>
+                </td>
+                <td>
+                    Acciones
+                </td>
+            </tr>
+            {% for m in masc %}
+                <tr>
+                    <td>
+                        <label for="">{{ m.2 }}</label>
+                    </td>
+                    <td>
+                        <label for="">{{ m.3 }}</label>
+                    </td>
+                    <td>
+                        <a href="/agendar_cita/{{ m.0 }}">Agregar cita</a>
+                    </td>
+                    <td>
+                        <a href="/agregar_receta/{{ m.0 }}">Agregar receta</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

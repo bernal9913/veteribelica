@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ventas totales</title>
+</head>
+<body>
+    <div>
+        <h1>
+            Historial de ventas de VeteriBelica
+        </h1>
+        <h1>Bienvenido: {{ current_user.user }}</h1>
+    </div>
+    <div>
+        <table>
+            <tr>
+                <td>
+                    <label for="">ID venta</label>
+                </td>
+                <td>
+                    <label for="">Insumo</label>
+                </td>
+                <td>
+                    <label for="">Cantidad</label>
+                </td>
+                <td>
+                    <label for="">Precio</label>
+                </td>
+                <td>
+                    <label for="">Fecha de venta</label>
+                </td>
+            </tr>
+            {% for v in ventas %}
+                <tr>
+                    <td>
+                        {{ v.0 }}
+                    </td>
+                    <td>
+                        {{ v.1 }}
+                    </td>
+                    <td>
+                        {{ v.2 }}
+                    </td>
+                    <td>
+                        {{ v.3 }}
+                    </td>
+                    <td>
+                        {{ v.4 }}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <a href="/ventas"><--Volver atras</a>
+    <a href="/logout">Cerrar sesion</a>
+</body>
+</html>

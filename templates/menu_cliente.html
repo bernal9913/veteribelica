@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Menu de clientes</title>
 </head>
-<body>
+<body >
     <div>
-        <h1>Bienvenido: {{ current_user.user }} {{  current_user.tipoUser}}</h1>
+        <h1>Bienvenido: {{ current_user.user }}</h1>
         <h1>Menu de cliente: </h1>
         <!--<h2><a href="/agendar_cita">Agendar cita</a></h2>-->
-        <h2><a href="/agregar_mascota">Agregar mascota</a></h2>
+        {% for i in idc %}
+            <h2><a href="/agregar_mascota/{{ i.0 }}">Agregar mascota</a></h2>
+        {% endfor %}
     </div>
     <div>
         <h1>
@@ -28,9 +30,9 @@
                 <td>
                     <label for="">Accion</label>
                 </td>
-                <td>
+                <!--<td>
                     <label for="">Accion</label>
-                </td>
+                </td>-->
             </tr>
             {% for m in mascotas %}
             <tr>
@@ -43,14 +45,70 @@
                 <td>
                     <a href="/agendar_cita/{{ m.0 }}">Agendar</a>
                 </td>
+                <!--
                 <td>
                     <a href="/eliminar_mascota/{{ m.0}}">Eliminar</a>
+                </td>
+                -->
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div>
+        <h1>Citas proximas: </h1>
+        <table>
+            <tr>
+                <td>
+                    <label for="">Nombre: </label>
+                </td>
+                <td>
+                    <label for="">
+                        Fecha de la cita: 
+                    </label>
+                </td>
+            </tr>
+            {% for c in citas %}
+                <tr>
+                    <td>
+                        <label for="">{{ c.0 }}</label>
+                    </td>
+                    <td>
+                        <label for="">{{ c.1 }}</label>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div>
+        <h1>Recetas para sus animales: </h1>
+        <table>
+            <tr>
+                <td>
+                    <label for="">Nombre: </label>
+                </td>
+                <td>
+                    <label for="">Fecha</label>
+                </td>
+                <td>
+                    <label for="">Prescripción</label>
+                </td>
+            </tr>
+            {% for r in recetas %}
+            <tr>
+                <td>
+                    {{ r.0 }}
+                </td>
+                <td>
+                    {{ r.1 }}
+                </td>
+                <td>
+                    {{ r.2 }}
                 </td>
             </tr>
             {% endfor %}
         </table>
     </div>
+    <h2><a href="/logout">Cerrar Sesion</a></h2>
     
-    <a href="/logout">Cerrar Sesion</a>
 </body>
 </html>

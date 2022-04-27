@@ -1,3 +1,4 @@
+{% for i in id %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +18,7 @@
                         <label for="">IdUsuario</label>
                     </td>
                     <td>
-                        <input type="text" id="iduser" name="iduser" >
+                        <input type="text" id="iduser" name="iduser" value = "{{ id.0 }}" hidden>
                     </td>
                 </tr>
                 <tr>
@@ -42,3 +43,4 @@
     </div>
 </body>
 </html>
+{% endfor %}
