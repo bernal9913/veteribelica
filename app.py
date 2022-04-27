@@ -182,7 +182,7 @@ def guardar_cita():
         cursor.execute('INSERT INTO citas (fechaCita, idanimal) VALUES(%s, %s)', (b, a,))
         mysql.connection.commit()
         print("exito en subir la cita")
-        return redirect(url_for('menu_cliente'))
+        return redirect(url_for('logout'))
 
 @app.route('/menu_staff', methods=['GET', 'POST'])
 def inicioStaff():
