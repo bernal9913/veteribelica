@@ -8,6 +8,7 @@
 </head>
 <body>
     <div>
+        <h1>Bienvenido: {{ current_user.user }} {{  current_user.tipoUser}}</h1>
         <h1>Menu de cliente: </h1>
         <!--<h2><a href="/agendar_cita">Agendar cita</a></h2>-->
         <h2><a href="/agregar_mascota">Agregar mascota</a></h2>
@@ -49,5 +50,7 @@
             {% endfor %}
         </table>
     </div>
+    
+    <a href="/logout">Cerrar Sesion</a>
 </body>
 </html>

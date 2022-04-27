@@ -1,29 +1,84 @@
 
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, flash
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
-import re
-  
+from flask_login import LoginManager, login_user, logout_user, login_required
+from flask_wtf.csrf import CSRFProtect 
+# modelos
+#from models.ModelUser import ModelUser
+from models.ModelUser import ModelUser
+# entidades
+from models.entities.User import User
 #https://www.geeksforgeeks.org/login-and-registration-project-using-flask-and-mysql/
 app = Flask(__name__)
-  
-  
-app.secret_key = 'your secret key'
-  
+csrf = CSRFProtect()
+
+app.secret_key = 'clavebelica1'
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_DB'] = 'veteribelica'
-  
-mysql = MySQL(app)
-  
+
+mysql = MySQL(app) # db 
+login_manager_app = LoginManager(app)
+
+@login_manager_app.user_loader
+def load_user(id):
+    return ModelUser.get_by_id(mysql,id)
+
 @app.route('/')
+def index():
+    return redirect(url_for('login'))
+
+def status_404():
+    return render_template('no_existe.html'),404
+@app.route('/redireccionar/<tipo>', methods=['GET', 'POST'])
+def redireccionar(tipo):
+    print(type(tipo))
+    #logged_user.tipoUser
+    cliente = 'C'
+    staff = 'S'
+    if tipo == cliente:
+        return redirect(url_for('menu_cliente'))
+    if tipo == staff:
+        return redirect(url_for('inicioStaff'))
+
+@app.route('/login', methods =['GET', 'POST'])
 def login():
-    return 'serse'
+    if request.method == 'POST':
+        print(request.form['user'])
+        print(request.form['pass'])
+        user = User(0,request.form['user'], request.form['pass'])
+        logged_user = ModelUser.login(mysql,user)
+        if logged_user!= None:
+            print("usuario logueado difernte a no")
+            if logged_user.password:
+                login_user(logged_user)
+                print("usuario logeado...")
+                #print(login_user)
+                typeUser = ModelUser.get_type_by_user(mysql,request.form['user'])
+                print(typeUser)
+                #session['tipoUser'] = typeUser
+                #user_type = ModelUser.get_by_id(mysql,user)
+                #print(user_type)
+                return redirect(url_for('redireccionar', tipo = typeUser))
+            else:
+
+                flash("invalid password")
+        else:
+            flash("User not found ...")
+            return redirect(url_for('login'))
+    if request.method == 'GET':
+        return render_template('login.html')
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('login'))
 
 @app.route('/menu_cliente', methods =['GET', 'POST'])
-def cliente():
+def menu_cliente():
     if request.method == 'GET':
         iduser = "1"
+        
         cur = mysql.connection.cursor()
         cur.execute('SELECT idmascota, nombreMascota, raza FROM mascotas WHERE idusuario = ' + iduser)
         datosMascotas = cur.fetchall()
@@ -122,3 +177,4 @@ def citaStaff2():
 
 if __name__ == '__main__':
     app.run(debug=True, port=2000)
+    app.error_handler(404,status_404)
