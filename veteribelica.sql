@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 27, 2022 at 11:55 PM
+-- Generation Time: Apr 30, 2022 at 05:17 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -43,7 +43,9 @@ INSERT INTO `citas` (`idcita`, `idanimal`, `fechaCreacion`, `fechaCita`) VALUES
 (2, 1, '2022-04-25 23:26:45', '2022-05-05'),
 (3, 3, '2022-04-25 23:28:38', '2022-04-19'),
 (4, 4, '2022-04-27 09:48:15', '2022-05-03'),
-(5, 7, '2022-04-27 13:02:13', '2022-05-07');
+(5, 7, '2022-04-27 13:02:13', '2022-05-07'),
+(6, 8, '2022-04-27 16:07:17', '2022-04-28'),
+(7, 8, '2022-04-27 16:09:24', '2022-04-29');
 
 -- --------------------------------------------------------
 
@@ -69,7 +71,8 @@ INSERT INTO `mascotas` (`idmascota`, `idusuario`, `nombreMascota`, `raza`) VALUE
 (4, 2, 'Wolfie', 'Danes'),
 (5, 7, 'Sobrino', 'Gato'),
 (6, 7, 'Federico', 'Cuyo'),
-(7, 8, 'Rigoberto mayweather', 'Pollo');
+(7, 8, 'Rigoberto mayweather', 'Pollo'),
+(8, 9, 'Lichi', 'Cuyo');
 
 -- --------------------------------------------------------
 
@@ -91,7 +94,8 @@ CREATE TABLE `recetas` (
 INSERT INTO `recetas` (`idreceta`, `idanimal`, `fechareceta`, `prescripcion`) VALUES
 (1, 3, '2022-04-27', 'parecetamol'),
 (2, 2, '2022-04-27', 'cariñitos'),
-(3, 7, '2022-04-27', 'Caldo de pollo con requeson');
+(3, 7, '2022-04-27', 'Caldo de pollo con requeson'),
+(4, 8, '2022-04-27', 'coca y un cigarro');
 
 -- --------------------------------------------------------
 
@@ -118,7 +122,8 @@ INSERT INTO `usuarios` (`idusuario`, `user`, `password`, `tipoUser`) VALUES
 (5, 'amaro', 'asd', 'S'),
 (6, 'farmin', 'asd', 'V'),
 (7, 'mario', 'asd', 'C'),
-(8, 'Pollo', 'asd', 'C');
+(8, 'Pollo', 'asd', 'C'),
+(9, 'meraz', 'asd', 'C');
 
 -- --------------------------------------------------------
 
@@ -185,25 +190,25 @@ ALTER TABLE `ventas`
 -- AUTO_INCREMENT for table `citas`
 --
 ALTER TABLE `citas`
-  MODIFY `idcita` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idcita` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `mascotas`
 --
 ALTER TABLE `mascotas`
-  MODIFY `idmascota` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idmascota` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `recetas`
 --
 ALTER TABLE `recetas`
-  MODIFY `idreceta` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idreceta` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `ventas`
